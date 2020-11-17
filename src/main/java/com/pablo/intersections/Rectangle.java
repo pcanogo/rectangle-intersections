@@ -1,7 +1,7 @@
 package com.pablo.intersections;
 
-public class Rectangle {
-	private final int index;
+public class Rectangle implements Comparable<Rectangle>{
+	private final Integer index;
 	public final Point pointOne;
 	public final Point pointTwo;
 	private final int deltax;
@@ -15,7 +15,7 @@ public class Rectangle {
 		this.deltay = deltay;
 	}
 	
-	public int getIndex() {
+	public Integer getIndex() {
 		return this.index;
 	}
 	
@@ -59,4 +59,9 @@ public class Rectangle {
 		}
 		return false;
 	}
+	
+    @Override
+    public int compareTo(Rectangle r) {
+        return this.getIndex().compareTo(r.getIndex());
+    }
 }

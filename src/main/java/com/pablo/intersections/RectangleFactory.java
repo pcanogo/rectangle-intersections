@@ -1,6 +1,7 @@
 package com.pablo.intersections;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RectangleFactory {
@@ -37,7 +38,7 @@ public class RectangleFactory {
 				parents.add(rect);
 			}
 		}
-		
+		Collections.sort(parents);
 		return parents;
 	}
 }

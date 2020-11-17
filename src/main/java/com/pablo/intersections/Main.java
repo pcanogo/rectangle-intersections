@@ -17,7 +17,7 @@ public class Main
         while(!Intersector.rectangles.isEmpty()) {
         	Rectangle currentRect = Intersector.rectangles.poll();
         	
-        	if(currentRect instanceof IntersectRectangle) continue;
+        	if(currentRect instanceof IntersectRectangle) break;
         	
         	for(Rectangle rect : Intersector.rectangles) {
         		
