@@ -1,4 +1,5 @@
 package com.pablo.intersections;
+import java.util.Set;
 
 public class Main 
 {
@@ -31,8 +32,12 @@ public class Main
         				int index = Intersector.generateIndex(currentRect);
             			Rectangle parents[] = {currentRect, rect};
             			IntersectRectangle intersectRect = RectangleFactory.getIntersectRectangle(index, points, parents);
-        				Intersector.rectangles.add(intersectRect);
-        				System.out.println(intersectRect);
+            			Set<Integer> parentSet = intersectRect.getParentsIndex();
+            			if(!Registor.hasIntersection(parentSet)) {
+                			Registor.addIntersection(parentSet);
+            				Intersector.rectangles.add(intersectRect);
+            				System.out.println(intersectRect);	
+            			}
         			}
         		}
         	}

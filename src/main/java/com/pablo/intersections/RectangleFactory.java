@@ -1,16 +1,16 @@
 package com.pablo.intersections;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-public class RectangleFactory {
+public final class RectangleFactory {
 	
 	public static IntersectRectangle getIntersectRectangle(int index, Point[] points ,Rectangle[] parents) {
 		int deltax = points[1].getX() - points[0].getX();
 		int deltay = points[1].getY() - points[0].getY();
 		
-		List<Rectangle> allParents = getParents(parents[0], parents[1]);
+		Set<Rectangle> allParents = getParents(parents[0], parents[1]);
 		
 		return new IntersectRectangle(index, points[0].getX(), points[0].getY(), deltax, deltay, allParents);
 	}
@@ -26,9 +26,9 @@ public class RectangleFactory {
 		return deltax > 0 && deltay > 0;
 	}
 	
-	public static List<Rectangle> getParents(Rectangle rectOne, Rectangle rectTwo) {
+	public static Set<Rectangle> getParents(Rectangle rectOne, Rectangle rectTwo) {
 		Rectangle rects[] = {rectOne, rectTwo};
-		List<Rectangle> parents = new ArrayList<Rectangle>();
+		Set<Rectangle> parents = new HashSet<Rectangle>();
 		
 		for(Rectangle rect : rects) {
 			if(rect instanceof IntersectRectangle) {
@@ -38,7 +38,7 @@ public class RectangleFactory {
 				parents.add(rect);
 			}
 		}
-		Collections.sort(parents);
+//		Collections.sort(parents);
 		return parents;
 	}
 }
