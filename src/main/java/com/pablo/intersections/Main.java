@@ -1,32 +1,25 @@
 package com.pablo.intersections;
 
+import java.util.List;
 import java.util.Set;
 
 public class Main {
 	public static void main(String[] args) {
 		Register rg = new Register();
 
-		Rectangle A = new Rectangle(1, 100, 100, 250, 80);
-		Rectangle B = new Rectangle(2, 120, 200, 250, 150);
-		Rectangle C = new Rectangle(3, 140, 160, 250, 100);
-		Rectangle D = new Rectangle(4, 160, 140, 350, 190);
-		
-		rg.rectQueue.add(A);
-		rg.addRectangle(A);
-		
-		rg.rectQueue.add(B);
-		rg.addRectangle(B);
-		
-		rg.rectQueue.add(C);
-		rg.addRectangle(C);
-		
-		rg.rectQueue.add(D);
-		rg.addRectangle(D);
+		String filePath = "C:\\Users\\pablo\\Documents\\rects.json";
+		List<Rectangle> rectangles = RectangleFactory.rectanglesFromFile(filePath);
+
+		for (Rectangle rect : rectangles) {
+			rg.rectQueue.add(rect);
+			rg.addRectangle(rect);
+		}
 
 		while (!rg.rectQueue.isEmpty()) {
 			Rectangle currentRect = rg.rectQueue.poll();
 
-			if (RectangleFactory.isIntersect(currentRect)) break;
+			if (RectangleFactory.isIntersect(currentRect))
+				break;
 
 			for (Rectangle rect : rg.rectQueue) {
 				if (RectangleFactory.isIntersect(rect)) {
