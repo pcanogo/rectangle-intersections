@@ -1,6 +1,7 @@
 package com.pablo.intersections;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.HashMap;
@@ -28,8 +29,8 @@ public final class Register {
 		return this.intersections.containsKey(rects);
 	}
 	
-	public int generateIndex(Rectangle baseRect) {
-		int index = 1 + rectQueue.size() + baseRect.getIndex();
+	public int generateIndex() {
+		int index = 1 + this.intersections.size();
 		return index;
 	}
 	
@@ -37,9 +38,11 @@ public final class Register {
 		this.rectangles.stream().map(Rectangle::toString).forEach(System.out::println);
 	}
 	
-	public String intersectionsToString() {
-		String result = "";
-		return result;
+	public void printIntersections() {
+		int lenght = this.intersections.size();
+		Rectangle[] intersects = this.intersections.values().toArray(new Rectangle[lenght]);
+		Arrays.sort(intersects);
+		Arrays.stream(intersects).map(Rectangle::toString).forEach(System.out::println);
 	}
 	
 }

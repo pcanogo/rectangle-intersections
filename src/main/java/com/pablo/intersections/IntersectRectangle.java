@@ -1,5 +1,6 @@
 package com.pablo.intersections;
 
+import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -31,16 +32,26 @@ public class IntersectRectangle extends Rectangle{
 	
 	@Override
 	public String toString() {
-		String parentsIndexes = "";
-		for (Rectangle parent : parents) {
-			parentsIndexes += parent.getIndex() + ", ";
-		}
-		parentsIndexes = parentsIndexes.substring(0, parentsIndexes.length() - 2);
+		String parentString = createParentString();
 		
-		return "Intersect [index=" + this.getIndex()
-				+ ", parents=[" + parentsIndexes + "]"
-				+ ", pointOne=" + pointOne + ", pointTwo=" + pointTwo 
-				+ ", deltax=" + this.getDeltaX() + ", deltay=" + this.getDeltaY()
-				+ "]";
+		return this.getIndex() 
+				+ ": Between rectangle " + parentString
+				+ " at " + pointOne 
+				+ ", delta_x=" + this.getDeltaX() 
+				+ ", delta_y=" + this.getDeltaY()
+				+ ".";
+	}
+	
+	private String createParentString() {
+		String parentString = "";
+		int length = this.parents.size();
+		Rectangle[] parentArray = this.parents.toArray(new Rectangle[length]);
+		Arrays.sort(parentArray);
+		for (int i=0; i < parentArray.length - 2; i++) {
+			parentString += parentArray[i].getIndex() + ", ";
+		}
+		parentString += parentArray[length - 2].getIndex();
+		parentString += " and " + parentArray[length - 1].getIndex();
+		return parentString;
 	}
 }

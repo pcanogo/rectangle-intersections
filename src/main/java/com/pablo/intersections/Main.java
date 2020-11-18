@@ -37,20 +37,21 @@ public class Main {
 				if (Intersecter.hasIntersections(currentRect, rect)) {
 					Point points[] = Intersecter.getIntersections(currentRect, rect);
 					if (RectangleFactory.validDeltas(points)) {
-						int index = rg.generateIndex(currentRect);
+						int index = rg.generateIndex();
 						Rectangle parents[] = { currentRect, rect };
 						IntersectRectangle newRect = RectangleFactory.getIntersectRectangle(index, points, parents);
 						Set<Integer> parentSet = newRect.getParentsIndex();
 						if (!rg.hasIntersection(parentSet)) {
 							rg.addIntersection(parentSet, newRect);
 							rg.rectQueue.add(newRect);
-//							System.out.println(newRect);
 						}
 					}
 				}
 			}
 		}
-		
+		System.out.println("Input");
 		rg.printRectangles();
+		System.out.println("Intersections:");
+		rg.printIntersections();
 	}
 }

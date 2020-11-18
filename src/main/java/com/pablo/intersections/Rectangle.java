@@ -19,8 +19,8 @@ public class Rectangle implements Comparable<Rectangle>{
 	public String toString() {
 		return 	this.index 
 				+ ": Rectangle at " + this.pointOne.toString()
-				+ ", delta x=" + this.deltax
-				+ ", delta y=" + this.deltay + ".";
+				+ ", delta_x=" + this.deltax
+				+ ", delta_y=" + this.deltay + ".";
 	}
 
 	public Integer getIndex() {
@@ -35,32 +35,7 @@ public class Rectangle implements Comparable<Rectangle>{
 		return this.deltay;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + deltax;
-		result = prime * result + deltay;
-		result = prime * result + index;
-		result = prime * result + ((pointOne == null) ? 0 : pointOne.hashCode());
-		result = prime * result + ((pointTwo == null) ? 0 : pointTwo.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Rectangle) {
-			Rectangle r = (Rectangle) obj;
-			boolean result;
-			result = deltax == r.deltax;
-			result = deltay == r.deltay;
-			result = index == r.index;
-			result = pointOne == null ? false : pointOne.equals(r.pointOne);
-			result = pointTwo == null ? false : pointTwo.equals(r.pointTwo);
-			return result;
-		}
-		return false;
-	}
 	
 	
     @Override
