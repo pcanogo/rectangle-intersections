@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class Main {
 	public static void main(String[] args) {
+
 		Register rg = new Register();
 
 		String filePath = "C:\\Users\\pablo\\Documents\\rects.json";

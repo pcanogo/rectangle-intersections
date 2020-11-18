@@ -4,29 +4,29 @@ public class Rectangle implements Comparable<Rectangle> {
 	private final Integer index;
 	public final Point pointOne;
 	public final Point pointTwo;
-	private final int delta_x;
-	private final int delta_y;
+	private final int deltax;
+	private final int deltay;
 
-	public Rectangle(int index, int x, int y, int delta_x, int delta_y) {
+	public Rectangle(int index, int x, int y, int deltax, int deltay) {
 		this.index = index;
 		this.pointOne = new Point(x, y);
-		this.pointTwo = new Point(x + delta_x, y + delta_y);
-		this.delta_x = delta_x;
-		this.delta_y = delta_y;
+		this.pointTwo = new Point(x + deltax, y + deltay);
+		this.deltax = deltax;
+		this.deltay = deltay;
 	}
 
 	public Rectangle(int index, JsonRectangle r) {
 		this.index = index;
 		this.pointOne = new Point(r.getX(), r.getY());
 		this.pointTwo = new Point(r.getX() + r.getDelta_x(), r.getY() + r.getDelta_y());
-		this.delta_x = r.getDelta_x();
-		this.delta_y = r.getDelta_y();
+		this.deltax = r.getDelta_x();
+		this.deltay = r.getDelta_y();
 	}
 
 	@Override
 	public String toString() {
-		return this.index + ": Rectangle at " + this.pointOne.toString() + ", delta_x=" + this.delta_x + ", delta_y="
-				+ this.delta_y + ".";
+		return this.index + ": Rectangle at " + this.pointOne.toString() + ", delta_x=" + this.deltax + ", delta_y="
+				+ this.deltay + ".";
 	}
 
 	public Integer getIndex() {
@@ -34,11 +34,11 @@ public class Rectangle implements Comparable<Rectangle> {
 	}
 
 	public int getDeltaX() {
-		return this.delta_x;
+		return this.deltax;
 	}
 
 	public int getDeltaY() {
-		return this.delta_y;
+		return this.deltay;
 	}
 
 	@Override
