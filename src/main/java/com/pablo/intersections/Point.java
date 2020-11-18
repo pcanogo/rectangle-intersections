@@ -1,9 +1,5 @@
 package com.pablo.intersections;
 
-/**
- * @author pablo
- *
- */
 public class Point {
 	private final int x;
 	private final int y;

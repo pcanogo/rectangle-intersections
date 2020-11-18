@@ -1,10 +1,6 @@
 package com.pablo.intersections;
 
-import java.util.ArrayDeque;
-
-public final class Intersector {
-	
-	public static ArrayDeque<Rectangle> rectangles = new ArrayDeque<Rectangle>();
+public final class Intersecter {
 	
 	public static boolean hasIntersections(Rectangle rectOne, Rectangle rectTwo) {
 		int a3x = Math.max(rectOne.pointOne.getX(), rectOne.pointTwo.getX());
@@ -15,6 +11,7 @@ public final class Intersector {
 		
 		Point pointA = new Point(a3x, a3y);
 		Point pointB = new Point(b3x, b3y);
+		
 		return pointA.equals(rectOne.pointTwo) && pointB.equals(rectTwo.pointOne);
 	}
 	
@@ -30,10 +27,5 @@ public final class Intersector {
 		points[1] = new Point(PointTwoX, PointTwoY);
 		
 		return points;
-	}
-	
-	public static int generateIndex(Rectangle baseRect) {
-		int index = 1 + rectangles.size() + baseRect.getIndex();
-		return index;
 	}
 }

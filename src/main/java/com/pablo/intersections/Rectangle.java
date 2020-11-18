@@ -15,6 +15,14 @@ public class Rectangle implements Comparable<Rectangle>{
 		this.deltay = deltay;
 	}
 	
+	@Override
+	public String toString() {
+		return 	this.index 
+				+ ": Rectangle at " + this.pointOne.toString()
+				+ ", delta x=" + this.deltax
+				+ ", delta y=" + this.deltay + ".";
+	}
+
 	public Integer getIndex() {
 		return this.index;
 	}
@@ -25,12 +33,6 @@ public class Rectangle implements Comparable<Rectangle>{
 
 	public int getDeltaY() {
 		return this.deltay;
-	}
-
-	@Override
-	public String toString() {
-		return "[index=" + index + ", pointOne=" + pointOne + ", pointTwo=" + pointTwo + ", deltax=" + deltax
-				+ ", deltay=" + deltay + "]";
 	}
 
 	@Override
@@ -59,6 +61,7 @@ public class Rectangle implements Comparable<Rectangle>{
 		}
 		return false;
 	}
+	
 	
     @Override
     public int compareTo(Rectangle r) {

@@ -1,14 +1,14 @@
 package com.pablo.intersections;
 
-import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class IntersectRectangle extends Rectangle{
 
 	private Set<Rectangle> parents;
 
 	public IntersectRectangle(int index, int x, int y, int deltax, int deltay, Set<Rectangle> parents) {
-		super(index, x,y, deltax, deltay);
+		super(index, x, y, deltax, deltay);
 		this.parents =  parents;
 	}
 	
@@ -17,11 +17,7 @@ public class IntersectRectangle extends Rectangle{
 	}
 	
 	public Set<Integer> getParentsIndex(){
-		Set<Integer> parentIndexes = new HashSet<Integer>();
-		for(Rectangle parent : parents) {
-			parentIndexes.add(parent.getIndex());
-		}
-		return parentIndexes;
+		return parents.stream().map(Rectangle::getIndex).collect(Collectors.toSet());
 	}
 	
 	public boolean isChildOf(Rectangle rect) {
@@ -42,7 +38,7 @@ public class IntersectRectangle extends Rectangle{
 		parentsIndexes = parentsIndexes.substring(0, parentsIndexes.length() - 2);
 		
 		return "Intersect [index=" + this.getIndex()
-				+ ", parents=[ " + parentsIndexes + "]"
+				+ ", parents=[" + parentsIndexes + "]"
 				+ ", pointOne=" + pointOne + ", pointTwo=" + pointTwo 
 				+ ", deltax=" + this.getDeltaX() + ", deltay=" + this.getDeltaY()
 				+ "]";
