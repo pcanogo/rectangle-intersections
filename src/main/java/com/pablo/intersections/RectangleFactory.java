@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Set;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
+import com.pablo.intersections.JsonRectangles.JsonRectangle;
 
 public final class RectangleFactory {
 
@@ -28,16 +28,19 @@ public final class RectangleFactory {
 		Gson gson = new Gson();
 		List<Rectangle> rects = new ArrayList<Rectangle>();
 		try (Reader reader = new FileReader(filePath)) {
-			JsonElement input = JsonParser.parseReader(reader);
-			JsonObject inputObject = input.getAsJsonObject();
-			JsonArray inputRects = inputObject.get("rects").getAsJsonArray();
-			for (int i = 0; i < inputRects.size(); i++) {
-				JsonRectangle r = gson.fromJson(inputRects.get(i), JsonRectangle.class);
-				Rectangle rect = new Rectangle(i + 1, r);
-				rects.add(rect);
+			try {
+				List<JsonRectangle> rectangles = gson.fromJson(reader, JsonRectangles.class).rects;
+				for (int i = 0; i < rectangles.size(); i++) {
+					Rectangle rect = new Rectangle(i + 1, rectangles.get(i));
+					rects.add(rect);
+				}
+			} catch (JsonSyntaxException e) {
+				System.err.println("Wrong JSON format in file");
+			} catch (JsonParseException e) {
+				System.err.println("Cannot parse JSON file");
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException | JsonIOException e) {
+			throw new IllegalStateException(e);
 		}
 
 		return rects;

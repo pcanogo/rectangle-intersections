@@ -1,6 +1,6 @@
 package com.pablo.intersections;
 
-import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -22,32 +22,26 @@ public class IntersectRectangle extends Rectangle {
 	}
 
 	public boolean isChildOf(Rectangle rect) {
-		for (Rectangle parent : parents) {
-			if (parent.equals(rect)) {
-				return true;
-			}
-		}
-		return false;
+		return parents.stream().anyMatch(r -> r.equals(rect));
 	}
 
 	@Override
 	public String toString() {
 		String parentString = createParentString();
 
-		return this.getIndex() + ": Between rectangle " + parentString + " at " + pointOne + ", delta_x="
-				+ this.getDeltaX() + ", delta_y=" + this.getDeltaY() + ".";
+		return this.index + ": Between rectangle " + parentString + " at " + pointOne + ", delta_x=" + this.deltax
+				+ ", delta_y=" + this.deltay + ".";
 	}
 
 	private String createParentString() {
-		String parentString = "";
 		int length = this.parents.size();
-		Rectangle[] parentArray = this.parents.toArray(new Rectangle[length]);
-		Arrays.sort(parentArray);
-		for (int i = 0; i < parentArray.length - 2; i++) {
-			parentString += parentArray[i].getIndex() + ", ";
+		List<Rectangle> sortedParents = this.parents.stream().sorted().collect(Collectors.toList());
+		StringBuilder builder = new StringBuilder();
+		for (int i = 0; i < sortedParents.size() - 2; i++) {
+			builder.append(sortedParents.get(i).getIndex() + ", ");
 		}
-		parentString += parentArray[length - 2].getIndex();
-		parentString += " and " + parentArray[length - 1].getIndex();
-		return parentString;
+		builder.append(sortedParents.get(length - 2).getIndex());
+		builder.append(" and " + sortedParents.get(length - 1).getIndex());
+		return builder.toString();
 	}
 }

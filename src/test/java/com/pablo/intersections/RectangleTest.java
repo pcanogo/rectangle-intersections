@@ -1,4 +1,5 @@
 package com.pablo.intersections;
+import com.pablo.intersections.JsonRectangles.JsonRectangle;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

@@ -1,11 +1,13 @@
 package com.pablo.intersections;
 
+import com.pablo.intersections.JsonRectangles.JsonRectangle;
+
 public class Rectangle implements Comparable<Rectangle> {
-	private final Integer index;
+	protected final Integer index;
 	public final Point pointOne;
 	public final Point pointTwo;
-	private final int deltax;
-	private final int deltay;
+	protected final int deltax;
+	protected final int deltay;
 
 	public Rectangle(int index, int x, int y, int deltax, int deltay) {
 		this.index = index;
