@@ -30,7 +30,7 @@ public class Point {
 	public boolean equals(Object obj) {
 		if (obj instanceof Point) {
 			Point p = (Point) obj;
-			return x == p.getX() && y == p.getY();
+			return x == p.x && y == p.y;
 		}
 		return false;
 	}

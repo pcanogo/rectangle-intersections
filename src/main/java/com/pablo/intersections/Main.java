@@ -19,18 +19,18 @@ public class Main {
 		while (!rg.rectQueue.isEmpty()) {
 			Rectangle currentRect = rg.rectQueue.poll();
 
-			if (RectangleFactory.isIntersect(currentRect))
+			if (currentRect instanceof IntersectRectangle)
 				break;
 
 			for (Rectangle rect : rg.rectQueue) {
-				if (RectangleFactory.isIntersect(rect)) {
+				if (rect instanceof IntersectRectangle) {
 					IntersectRectangle intersect = (IntersectRectangle) rect;
 					if (intersect.isChildOf(currentRect))
 						continue;
 				}
 				if (Intersecter.hasIntersections(currentRect, rect)) {
 					Point points[] = Intersecter.getIntersections(currentRect, rect);
-					if (RectangleFactory.validDeltas(points)) {
+					if (RectUtils.validDeltas(points)) {
 						int index = rg.generateIndex();
 						Rectangle parents[] = { currentRect, rect };
 						IntersectRectangle newRect = RectangleFactory.getIntersectRectangle(index, points, parents);
