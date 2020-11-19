@@ -26,7 +26,7 @@ public class RegisterTest {
 	private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
 	@Before
-	public void setRegister() {
+	public void setUpRegister() {
 		System.setOut(new PrintStream(outputStreamCaptor));
 		
 		register.addRectangle(rect1);
