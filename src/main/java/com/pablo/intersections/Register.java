@@ -41,8 +41,12 @@ public final class Register {
 
 	public void printIntersections() {
 		int lenght = this.intersections.size();
-		Rectangle[] intersects = this.intersections.values().toArray(new Rectangle[lenght]);
-		Arrays.sort(intersects);
-		Arrays.stream(intersects).map(Rectangle::toString).forEach(System.out::println);
+		if(lenght > 0) {
+			Rectangle[] intersects = this.intersections.values().toArray(new Rectangle[lenght]);
+			Arrays.sort(intersects);
+			Arrays.stream(intersects).map(Rectangle::toString).forEach(System.out::println);	
+		} else {
+			System.out.println("No Intersections found");
+		}
 	}
 }

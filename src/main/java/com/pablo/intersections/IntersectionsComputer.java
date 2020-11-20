@@ -1,5 +1,6 @@
 package com.pablo.intersections;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -14,6 +15,7 @@ public class IntersectionsComputer {
 
 		while (!register.rectQueue.isEmpty()) {
 			Rectangle currentRect = register.rectQueue.poll();
+			List<Rectangle> intersects = new ArrayList<>();
 
 			if (currentRect instanceof IntersectRectangle)
 				break;
@@ -33,11 +35,12 @@ public class IntersectionsComputer {
 						Set<Integer> parentSet = newRect.getParentsIndex();
 						if (!register.hasIntersection(parentSet)) {
 							register.addIntersection(parentSet, newRect);
-							register.rectQueue.add(newRect);
+							intersects.add(newRect);
 						}
 					}
 				}
 			}
+			register.rectQueue.addAll(intersects);
 		}
 		System.out.println("Input");
 		register.printRectangles();
