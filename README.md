@@ -1,5 +1,4 @@
 # Rectangle 
-[![Build Status](https://travis-ci.org/pcanogo/rectangle-intersections.svg?branch=main)](https://travis-ci.org/pcanogo/rectangle-intersections)
 
 ## Prerequisites
 * [Maven]: Tool for building, managing and testing Java proyects.
