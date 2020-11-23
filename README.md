@@ -1,4 +1,5 @@
 # Rectangle 
+[![pcanogo](https://circleci.com/gh/pcanogo/rectangle-intersections.svg?style=shield)](https://app.circleci.com/pipelines/github/pcanogo/rectangle-intersections)
 
 ## Prerequisites
 * [Maven]: Tool for building, managing and testing Java proyects.
