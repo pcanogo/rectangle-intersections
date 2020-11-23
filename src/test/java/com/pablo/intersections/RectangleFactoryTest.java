@@ -42,7 +42,7 @@ public class RectangleFactoryTest {
 
 	@Test
 	public void testRectangleFromFile() {
-		String filepath = new File("testfiles\\test_rects1.json").getAbsolutePath();
+		String filepath = new File("testfiles/test_rects1.json").getAbsolutePath();
 		List<Rectangle> actualRects = RectangleFactory.rectanglesFromFile(filepath);
 		List<Rectangle> rects = new ArrayList<>();
 		rects.add(rect1);
